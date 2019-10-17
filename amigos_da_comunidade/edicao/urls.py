@@ -4,10 +4,10 @@ from .views import *
 app_name = 'edicao' 
  
 urlpatterns = [
-	# path('adicionar/', CreateEdicao.as_view(), name='edicao_create',),
-	# path('listar/', InstituicaoList.as_view(), name='instituicao_list',),
-	# path('editar/<int:pk>/', InstituicaoUpdate.as_view(), name='instituicao_update',),
-	# path('deletar/<int:pk>/', instituicao_delete, name='instituicao_delete',),
+	path('adicionar/', EdicaoCreate.as_view(), name='edicao_create',),
+	path('listar/', EdicaoList.as_view(), name='edicao_list',),
+	path('editar/<int:pk>/', EdicaoUpdate.as_view(), name='edicao_update',),
+	path('deletar/<int:pk>/', edicao_delete, name='edicao_delete',),
 
 	# path('professor/adicionar/', ProfessorCreate.as_view(), name='professor_create',),
 	# path('professor/listar/', ProfessorList.as_view(), name='professor_list',),
