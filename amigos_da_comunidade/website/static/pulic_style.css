@@ -1,0 +1,143 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+
+
+/*Menu de cima*/
+.top_menu{
+	/*border: solid 1px red;*/
+	/*line-height: 20px;*/
+	padding: 8px;
+
+}
+
+.txt_AC{
+	font-size: 25px;
+	cursor: pointer;
+}
+.img_logo_ac{
+	cursor: pointer;
+}
+.img_logo_ac,.txt_AC{
+	vertical-align: middle;
+}
+
+.box_logo_txt{
+	width: 400px;
+	margin-left: 3em; 
+	/*border: solid 1px yellow;*/
+}
+
+.box_contato{
+	width: 500px;
+	margin-left: 3em; 
+	/*border: solid 1px yellow;*/
+}
+
+.icon_email{
+	width: 30px;
+	cursor: pointer;
+}
+.box_logo_txt,.box_contato{
+	vertical-align: middle;
+	display: inline-block;
+}
+.icon_email,.text_email{
+	vertical-align: middle;
+}
+.text_email{
+	font-size: 15px;
+	margin-right: 1em;
+	cursor: pointer;
+}
+.btn_login{
+	color: black;
+	font-size: 18px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.btn_login label{
+	cursor: pointer;
+	color: white;
+	transition-duration: 0.2s;
+	transition-delay: 0.1s;
+}
+
+.box_login{
+	display: inline-block;
+	cursor: pointer;
+	padding: 7px;
+	margin-left: 200px;
+	transition-duration: 0.3s;
+	transition-delay: 0.1s;
+	background-color: #00CDCD;
+	width: 100px;
+	text-align: center;
+	border-radius: 9px;
+}
+.box_login:hover{
+	background-color: white;
+	width: 100px;
+	text-align: center;
+	border-radius: 9px;
+	border: solid 1px #00CDCD;
+	color: black;
+}
+.box_login:hover .btn_login label{
+	color: black;
+}
+
+
+/*Submenu*/
+
+.submenu{
+	background-color: #0d1128;
+	color: white;
+	height: 5vw;
+	line-height: 5vw;
+}
+
+#home{
+	margin-left: 4em;
+}
+.itens_menu li{
+	display: inline-block;
+	margin-right: 17px;
+	font-size: 16px;
+	cursor: pointer;
+}
+.itens_menu a{
+	color: white;
+	text-decoration: none;
+}
+
+.img_background{
+	height: 45vw;
+	width: 100%;
+  	filter: brightness(0.7);
+    z-index: 2;
+
+ }
+ .box_txt_home{
+ 	position: absolute;
+ 	z-index: 5;
+ 	color: white;
+ 	margin-top: 13em;
+ 	/*border: solid 1px red;*/	
+ 	width: 38em;
+ 	margin-left: 4em;
+
+ }
+ .box_txt_home h1{
+ 	font-family: 'Nunito Sans', sans-serif;
+ 	font-weight: bold;
+ 	font-size: 17px;
+ }
+ .box_txt_home h2{
+ 	font-family: 'Nunito Sans', sans-serif;
+ 	font-weight: bold;
+ 	font-size: 35px;
+ }

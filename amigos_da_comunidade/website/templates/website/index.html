@@ -1,0 +1,90 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+
+	 <title>{% block title %} Amigos Da Comunidade Index{% endblock %}</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="icon" href="{% static 'images/logo70.png' %}" >
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap"rel="stylesheet"> 
+
+</head>
+
+<body onload="slideOne()">
+	<header class="top_menu">
+		<div class="box_logo_txt">
+			<img class="img_logo_ac" src="{% static 'images/logo70.png' %}">
+			<label class="txt_AC">Amigos da Comunidade<label>
+		</div>
+
+		<div class="box_contato">
+			<img class="icon_email"  src="{% static 'images/email.png' %}">
+			<label class="text_email">amigosdacomunidade@gmail.com</label>	
+
+
+			<img class="icon_email"  src="{% static 'images/tell.png' %}">
+			<label class="text_email">(89)98116-8517</label>
+		</div>
+
+		<div class="box_login">
+				
+			<a href="{% url 'core:index' %}" class="btn_login">
+				<label>Login</label>
+			</a>
+		</div>
+	</header>
+
+	<div class="submenu">
+		<ul class="itens_menu">
+			<a href="">
+				<li id="home">Home</li>
+			</a>
+
+			<a href="">
+				<li>Sobre</li>
+			</a>
+
+			<a href="">
+				<li>Galeria</li>
+			</a>
+
+			<a href="">
+				<li>Participe</li>
+			</a>
+
+			<a href="">
+				<li>Contato</li>
+			</a>
+		</ul>
+	</div>
+
+	<div class="content-home">
+		
+		<div class="box_txt_home">
+			<h1>Bem Vindo ao Amigos da Comunidade</h1>
+			<h2 id="sub_txt">A nossa meta é ajudar a comunidade de Picos-PI</h2>
+		</div>
+		<img class="img_background" id="img_background"  src="{% static 'images/bg_2.jpg' %}"> 
+
+
+	</div>
+
+	{% block scripts %}
+	<script>
+		
+		function slideOne(){
+			document.getElementById('img_background').src="/static/images/bg_2.jpg"
+			document.getElementById('sub_txt').innerHTML="A nossa meta é ajudar a comunidade de Picos-PI"
+			setTimeout("slideTwo()",3500)
+		}
+
+		function slideTwo(){
+			document.getElementById('img_background').src="/static/images/bg_1.jpg"			
+			document.getElementById('sub_txt').innerHTML="Realizamos atendimentos gratuitos para a população"			
+			setTimeout("slideOne()",3500)
+		}
+	{% endblock %}
+	</script>
+</body>
+</html>

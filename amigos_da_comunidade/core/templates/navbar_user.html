@@ -1,0 +1,41 @@
+
+<ul class="sidebar-menu" data-widget="tree">
+  <li class="header">Navegação</li>
+  <li class="treeview {% if request.resolver_match.url_name == 'list_consultation' %} active {% endif %}">
+    <a href="#" >
+      <i class="fas fa-hospital"></i> <span> Atendimento</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu" >
+      <li class="{% if request.resolver_match.url_name == 'list_consultation' %} active {% endif %}"><a href="{% url 'consultation:list_consultation' %}"><i class="fas fa-first-aid"></i> Consulta</a></li>
+    </ul>
+  </li>
+  <li class="treeview {% if request.resolver_match.url_name == 'horary_list' or request.resolver_match.url_name == 'scheduler_list' %} active {% endif %}">
+    <a href="#" >
+      <i class="fas fa-calendar-alt"></i> <span> Agenda</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu" >
+      <li class="{% if request.resolver_match.url_name == 'horary_list' %} active {% endif %}"><a href="{% url 'scheduler:horary_list' %}"><i class="fas fa-clock"></i> Horários</a></li>
+      <li class="{% if request.resolver_match.url_name == 'scheduler_list' %} active {% endif %}"><a href="{% url 'scheduler:scheduler_list' %}"><i class="fas fa-calendar-check"></i> Agendamentos</a></li>
+    </ul>
+  </li>
+  <li class="treeview {% if request.resolver_match.url_name == 'list_specialty' or request.resolver_match.url_name == 'list_dentist' or request.resolver_match.url_name == 'list_patient' or request.resolver_match.url_name == 'list_employee' %} active {% endif %}">
+    <a href="#" >
+      <i class="fas fa-database"></i> <span> Cadastros</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu" >
+      <li class="{% if request.resolver_match.url_name == 'list_specialty' %} active {% endif %}"><a href="{% url 'accounts:list_specialty' %}"><i class="fas fa-heartbeat"></i> Especialidades</a></li>
+      <li class="{% if request.resolver_match.url_name == 'list_dentist' %} active {% endif %}"><a href="{% url 'accounts:list_dentist' %}"><i class="fas fa-user-md"></i> Dentista</a></li>
+      <li class="{% if request.resolver_match.url_name == 'list_employee' %} active {% endif %}"><a href="{% url 'accounts:list_employee' %}"><i class="fas fa-user"></i> Funcionário</a></li>
+      <li class="{% if request.resolver_match.url_name == 'list_patient' %} active {% endif %}"><a href="{% url 'accounts:list_patient' %}"><i class="fas fa-users"></i> Pacientes</a></li>
+    </ul>
+  </li>
+</ul>

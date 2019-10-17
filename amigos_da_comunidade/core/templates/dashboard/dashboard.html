@@ -1,0 +1,214 @@
+{% extends 'base.html' %} 
+{% load widget_tweaks %} 
+{% load staticfiles %} 
+
+{% block body %}
+	<div class="content">
+	    <div class="row">
+	        <div class="col-md-10 col-md-offset-1">
+
+	            <h3>Painel do Administrador</h3>
+	            <div class="box content box-primary">
+	                <div class="row display">
+				        <div class="col-lg-3 col-xs-6">
+				          <!-- small box -->
+				          <div class="small-box bg-primary">
+				            <div class="inner">
+				            	{% if total_courses %}
+				              		<h3>{{ total_courses }}</h3>
+				              	{% else %}
+				              		<h3>0</h3>
+				              	{% endif %}
+				              <p>Total de cursos</p>
+				            </div>
+				            <div class="icon">
+				              <i class="fa fa-graduation-cap"></i>
+				            </div>
+				          </div>
+				        </div>
+				        <!-- ./col -->
+				        <div class="col-lg-3 col-xs-6">
+				          <!-- small box -->
+				          <div class="small-box bg-green">
+				            <div class="inner">
+				              	{% if studants %}
+				              		<h3>{{ studants }}</h3>
+				              	{% else %}
+				              		<h3>0</h3>
+				              	{% endif %}
+				              <p>Total de estudantes</p>
+				            </div>
+				            <div class="icon">
+				              <i class="fa fa-user-plus"></i>
+				            </div>
+				          </div>
+				        </div>
+				        <!-- ./col -->
+				        <div class="col-lg-3 col-xs-6">
+				          <!-- small box -->
+				          <div class="small-box bg-yellow">
+				            <div class="inner">
+				            	{% if coordinators %}
+				              		<h3>{{ coordinators }}</h3>
+				              	{% else %}
+				              		<h3>0</h3>
+				              	{% endif %}
+				            	<p>Total de Coordenadores</p>
+				            </div>
+				            <div class="icon">
+				              <i class="fa fa-user"></i>
+				            </div>
+				          </div>
+				        </div>
+				        <!-- ./col -->
+				        <div class="col-lg-3 col-xs-6">
+				          <!-- small box -->
+				          <div class="small-box bg-red">
+				            <div class="inner">
+				            	{% if lecturers %}
+				              		<h3>{{ lecturers }}</h3>
+				              	{% else %}
+				              		<h3>0</h3>
+				              	{% endif %}
+				            	<p>Total de Ministrantes</p>
+				            </div>
+				            <div class="icon">
+				              <i class="fa fa-user-circle"></i>
+				            </div>
+				          </div>
+				        </div>
+				        <!-- ./col -->
+				        <div class="col-lg-3 col-xs-6">
+				          <!-- small box -->
+				          <div class="small-box bg-green">
+				            <div class="inner">
+				            	{% if monitors %}
+				              		<h3>{{ monitors }}</h3>
+				              	{% else %}
+				              		<h3>0</h3>
+				              	{% endif %}
+				             	<p>Total de Monitores</p>
+				            </div>
+				            <div class="icon">
+				              <i class="fa fa-users"></i>
+				            </div>
+				          </div>
+				        </div>
+				        <!-- ./col -->
+				      </div>
+				      <!-- /.row -->
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="content">
+	    <div class="row">
+	        <div class="col-md-5 col-md-offset-1">
+	        	<!-- DONUT CHART -->
+				<div class="box box-success">
+					<div class="box-header with-border">
+					 	<h3 class="box-title">Total de Vagas Ofertadas </h3>
+					</div>
+					<div class="box-body chart-responsive">
+					 	<div class="chart" id="total_vacancies" style="height: 300px; position: relative;"></div>
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+	        </div>
+	        <div class="col-md-5">
+	        	<!-- DONUT CHART -->
+				<div class="box box-warning">
+					<div class="box-header with-border">
+					 	<h3 class="box-title">Distribuição de vagas por curso </h3>
+					</div>
+					<div class="box-body chart-responsive">
+					 	<div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+	        </div>
+	    </div>
+	</div>
+	<div class="content">
+	    <div class="row">
+	    	<div class="col-md-10 col-md-offset-1">
+
+	    		<div class="box box-primary" style="padding: 5px;">
+	    			<div class="box-header with-border">
+					 	<h3 class="box-title">Preenchimento de vagas de cada curso</h3><br/>
+					 	<span class="label label-danger">Total de Vagas</span>
+					 	<span class="label label-success">Vagas Preenchidas</span>
+					 	<span class="label label-warning">Vagas Disponíveis</span>
+					</div>
+				    <div class="row display">
+				    	{% for registration in registrations %}
+				    	<div class="col-md-3 col-xs-6 col-sm-4">
+				        	<!-- DONUT CHART -->
+							<div class="box box-warning">
+								<div class="box-header with-border">
+									<h3 class="box-title">{{ registration.course.name }}</h3>
+								</div>	 
+								<div class="box-body chart-responsive text-center">
+									<div class="chart" id="chart+{{registration.id}}" style="height: 300px; position: relative;"></div>
+								</div>
+								<!-- /.box-body -->
+							</div>
+							<!-- /.box -->
+				    	</div>
+				    	{% endfor %}
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block scripts %}
+	{{ block.super }}
+	{{ form.media }}
+	<script src="{% static 'bower_components/raphael/raphael.min.js' %}"></script>
+	<script src="{% static 'bower_components/morris_js/morris.min.js' %}"></script>
+	<script>
+	  $(function () {
+	    "use strict";
+	    //DONUT CHART
+	    var total_vacancies = new Morris.Donut({
+	      element: 'total_vacancies',
+	      resize: true,
+	      colors: ["#198e51"],
+	      data: [
+		  	{label: 'Total de vagas Ofertadas', value: '{{ total_vacancies }}'},
+	      ],
+	      hideHover: 'auto'
+	    });
+
+	    var donut = new Morris.Donut({
+	      element: 'sales-chart',
+	      resize: true,
+	      colors: ["#198e51", "#a82e21", "#f19b26", "#3a6b86"],
+	      data: [
+	      	{% for course in courses %}
+		        {label: '{{ course.name }}', value: '{{ course.vacancies }}'},
+	        {% endfor %}
+	      ],
+	      hideHover: 'auto'
+	    });
+
+	    {% for registration in registrations %}
+	    	var available_vacancies = '{{ registration.course.vacancies }}' - '{{ registration.get_count_registration }}';
+		    var donut1 = new Morris.Donut({
+		      element: 'chart+{{ registration.id }}',
+		      resize: true,
+		      colors: ["#a82e21", "#198e51", "#f19b26"],
+		      data: [
+			    {label: 'Total de Vagas', value: '{{ registration.course.vacancies }}'},
+			    {label: 'Vagas Preenchidas', value: '{{ registration.get_count_registration }}'},
+			    {label: 'Vagas Disponíveis', value: available_vacancies},
+		      ],
+		      hideHover: 'auto'
+		    });
+	    {% endfor %}
+	  });
+	</script>
+{% endblock %}

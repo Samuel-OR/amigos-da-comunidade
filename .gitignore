@@ -1,0 +1,13 @@
+*.pyc
+*.pyo
+*.json
+db.sqlite3
+/env
+/assessoria-internacional
+.DS_Store
+/media
+
+**/migrations/*
+**/_pycache_/*
+
+/env
