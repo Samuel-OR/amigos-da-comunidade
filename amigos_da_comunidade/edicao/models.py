@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse  
-
+import datetime
 class AuditModel(models.Model):
 	created_on = models.DateTimeField('Criado em', auto_now_add=True)
 	updated_on = models.DateTimeField('Autalizado em', auto_now=True)
@@ -12,7 +12,7 @@ class AuditModel(models.Model):
 class Edicao(AuditModel):
     
     nome_edicao = models.CharField('Nome da edição', max_length=200, blank=False, null=False)
-    data_inicio = models.DateField("Data de Inicio da Edição")
+    data_inicio = models.DateField("Data de Inicio da Edição", default=datetime.date.today)
     data_fim = models.DateField("Data Final da Edição")
     local = models.CharField('Local da Edição', max_length=200, blank=False, null=False)
     # logo = models.FileField('/uploads')
