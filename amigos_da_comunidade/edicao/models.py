@@ -15,6 +15,8 @@ class Edicao(AuditModel):
     data_inicio = models.DateField("Data de Inicio da Edição", default=datetime.date.today)
     data_fim = models.DateField("Data Final da Edição")
     local = models.CharField('Local da Edição', max_length=200, blank=False, null=False)
+    imagem_logo = models.FileField('Logo(png,jpeg,jpg..)', blank=True, null=True, upload_to='uploads/%Y/%m/%d/')
+    ativo = models.BooleanField('Ativo' , default=True,blank=False, null=False)
     # logo = models.FileField('/uploads')
 
     def __str__(self):

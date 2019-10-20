@@ -44,6 +44,8 @@
 								<th>Data de início</th>
 								<th>Data de fim</th>
 								<th>Local</th>
+								<th>Logo</th>
+								<th>Status</th>
 								<th class="text-center" width="7%">Ações</th>
 							</tr>
 						</thead>
@@ -55,6 +57,8 @@
 								<td>{{ object.data_inicio }}</td>
 								<td>{{ object.data_fim }}</td>
 								<td>{{ object.local }}</td>
+								<td><img src="{{object.imagem_logo}}"></td>
+								<td>{{ object.ativo }}</td>
 								
 								<td><div class="cent">
 									<!-- <a href="{#{% url 'nucleo:nucleo_details' object.id %}#}" class="btn btn-primary btn-xs" title="Exibir">

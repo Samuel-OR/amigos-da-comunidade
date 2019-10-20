@@ -12,6 +12,36 @@ class EdicaoCreate(CreateView):
 	template_name = 'edicao/add.html'
 	form_class = EdicaoForm
 
+	def post(self, request, *args, **kwargs):
+		self.object = None
+		
+		form = self.form_class(self.request.POST)
+
+		if form.is_valid():
+			return self.form_valid(form, request)
+
+		else:
+			return self.form_invalid(form, request)
+
+	def form_valid(self, form , request):
+
+		self.object = form.save()
+		
+		all_editions = Edicao.objects.all() 
+		for editionItem in all_editions:
+			object_edition = get_object_or_404(Edicao,id=editionItem.id)
+			print(object_edition.ativo)
+			if object_edition.ativo == True:
+				object_edition.ativo = False
+				object_edition.save()
+
+		self.object.save()
+
+		# form.save_m2m()
+		
+		return HttpResponseRedirect(reverse('edicao:edicao_list'))
+
+
 class EdicaoList(ListView):
 	model = Edicao
 	template_name = 'edicao/list.html'
