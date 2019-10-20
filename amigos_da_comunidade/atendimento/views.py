@@ -50,7 +50,7 @@ class SetorUpdate(UpdateView):
 	model = Setor
 	template_name = 'setor/add.html'
 	form_class = SetorForm
-
+	'''
 	def post(self, request, *args, **kwargs):
 		self.object = None
 		
@@ -70,7 +70,7 @@ class SetorUpdate(UpdateView):
 		setor.save()
 
 		return HttpResponseRedirect(reverse('atendimento:setor_list'))
-
+	'''
 class SetorList(ListView):
 	model = Setor
 	template_name = 'setor/list.html'
