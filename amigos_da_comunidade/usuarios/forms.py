@@ -2,30 +2,60 @@ from django import forms
 from dal import autocomplete
 from .models import *
 
-class PermissaoForm(forms.ModelForm):
-	class Meta:
-		model = Permissao
-		fields=['nome']
+from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
+from django import forms
+from dal import autocomplete
+from pycpfcnpj import cpfcnpj
+from django.contrib.auth import get_user_model
+
+from .models import User 
 
 
-# class ProfessorForm(forms.ModelForm):
-    
-# 	nucleo = forms.ModelChoiceField(
-# 		required=True,
-# 		queryset = Nucleo.objects.all(),
-# 		label = "Núcleo",
-# 		widget = autocomplete.ModelSelect2(url='ensino:nucleo_autocomplete',attrs={'data-width': '100%'})
-# 	)
+class UserAdminCreationForm(UserCreationForm):
+
+    class Meta:
+        model = User
+        fields = ['username', 'name', 'email']
 
 
-# 	instituicao = forms.ModelChoiceField(
-# 		required=True,
-# 		queryset = InstituicaoEnsino.objects.all(),
-# 		label = "Instituição de Ensino",
-# 		widget = autocomplete.ModelSelect2(url='ensino:instituicao_autocomplete')
-# 	)
+class UserAdminForm(forms.ModelForm):
 
-# 	class Meta:
-# 		model = Professor
-# 		fields = ['nome','nucleo','instituicao']
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'name', 'is_active', 'is_staff']
 
+
+class UpdateUserForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['name', 'email']
+
+
+
+class PasswordResetForm(PasswordResetForm):
+    def clean_email(self):
+        amount = get_user_model()._default_manager.filter(
+            email__iexact=self.cleaned_data.get('email'), is_active=True).count()
+        if(amount < 1):
+            raise forms.ValidationError('Lamentamos, mas não reconhecemos esse endereço de e-mail.')
+        return self.cleaned_data.get('email')
+
+
+class UserCreationForm(UserCreationForm):
+    """
+    Formulário para criaçao de usuário.
+    """
+    username =  forms.CharField(initial='')
+    class Meta:
+        model = User
+        fields = ['username', 'name', 'email', 'sex', 'phone']
+
+
+class UpdateUserForm(forms.ModelForm):
+    """
+    Formulário para ediçaão de usuário.
+    """
+    class Meta:
+        model = User
+        fields = ['name', 'email','sex', 'phone',]
