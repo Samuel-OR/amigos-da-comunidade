@@ -1,7 +1,3 @@
-from django import forms
-from dal import autocomplete
-from .models import *
-
 from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
 from django import forms
 from dal import autocomplete
@@ -49,7 +45,7 @@ class UserCreationForm(UserCreationForm):
     username =  forms.CharField(initial='')
     class Meta:
         model = User
-        fields = ['username', 'name', 'email', 'sex', 'phone']
+        fields = ['username', 'name', 'email', 'cpf', 'sex', 'phone', 'is_whatsapp']
 
 
 class UpdateUserForm(forms.ModelForm):
@@ -58,4 +54,5 @@ class UpdateUserForm(forms.ModelForm):
     """
     class Meta:
         model = User
-        fields = ['name', 'email','sex', 'phone',]
+        fields = ['name', 'email', 'cpf', 'sex', 'phone', 'is_whatsapp']
+
