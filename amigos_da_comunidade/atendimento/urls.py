@@ -14,7 +14,7 @@ urlpatterns = [
 	# path('professor/editar/<int:pk>/', ProfessorUpdate.as_view(), name='professor_update',),
 	# path('professor/deletar/<int:pk>/', professor_delete, name='professor_delete',),
 
-	# path('edicao-autocomplete/',EdicaoAutocomplete.as_view(), name='edicao_autocomplete',),
+	path('membros-autocomplete/',MembrosAutocomplete.as_view(), name='membros_autocomplete',),
 	# path('instituicao-autocomplete/',InstituicaoAutocomplete.as_view(), name='instituicao_autocomplete',),
 
 	# path('aluno/adicionar/',AlunoCreate.as_view(), name='aluno_create',),

@@ -10,5 +10,10 @@ class SetorForm(forms.ModelForm):
     
 	class Meta:
 		model = Setor
-		fields = ['nome_setor']
+		fields = ['nome_setor','membros']
+
+		widgets = {
+            'membros': autocomplete.ModelSelect2Multiple(url='atendimento:membros_autocomplete'),
+
+        }
 

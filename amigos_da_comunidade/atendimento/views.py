@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import*
 from datetime import datetime , date
 from django.views.generic import View
-
+from amigos_da_comunidade.accounts.models import *
 
 
 class SetorCreate(CreateView):
@@ -37,7 +37,7 @@ class SetorCreate(CreateView):
 
 	def form_valid(self, form , request):
 		
-		setor = form.save(commit=False)
+		setor = form.save()
 
 		# setor.edicao = Edicao.objects.filter(data_inicio__lte=datetime.now() , data_fim__gte=datetime.now() ).first()
 		setor.edicao = Edicao.objects.filter(ativo=True).first()
@@ -112,12 +112,12 @@ def setor_delete(request, pk):
 
 
 
-# class EdicaoAutocomplete(autocomplete.Select2QuerySetView):
-# 	def get_queryset(self):
+class MembrosAutocomplete(autocomplete.Select2QuerySetView):
+	def get_queryset(self):
 
-# 		qs = Edicao.objects.filter(data_inicio__lte=datetime.now() , data_fim__gte=datetime.now())
+		qs = User.objects.all()
 
-# 		if self.q:
-# 			qs = qs.filter(edition__ativo=True) 
+		if self.q:
+			qs = qs.filter(Q(name__icontains=self.q))
 
-# 		return qs 
+		return qs

@@ -41,9 +41,10 @@
 						<table class="table table-hover table-condensed table-bordered table-striped">
 							<thead>
 								<tr class="text-center">
-									<th class="text-center" width="30%">Nome</th>
-									<th class="text-center" width="30%">Edição</th>
-									<th class="text-center" width="30%">Ações</th>
+									<th class="text-center" width="20%">Nome</th>
+									<th class="text-center" width="20%">Edição</th>
+									<th class="text-center" width="50%">Voluntários</th>
+									<th class="text-center" width="10%">Ações</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -51,7 +52,13 @@
 								<tr>
 									<td>{{ setor.nome_setor }}</td>
 									<td>{{ setor.edicao }}</td>
-
+									<td>
+										{% for membro in setor.membros.all %}
+											<a class="btn btn-success btn-xs" title="Voluntários do setor">
+												{{membro}}
+											</a>
+										{% endfor %}
+									</td>
 									<td class="text-center">
 
 										<a href="{% url 'atendimento:setor_update' setor.id %}" class="btn btn-warning btn-xs" title="Editar">
