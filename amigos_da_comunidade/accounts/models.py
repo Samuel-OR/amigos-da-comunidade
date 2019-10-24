@@ -21,7 +21,7 @@ class AuditModel(models.Model):
 
 class User(AbstractBaseUser, PermissionsMixin, AuditModel):
 
-    username  = models.CharField('Usuário', max_length=100, blank=False, null=False)
+    username  = models.CharField('Usuário', max_length=100, blank=False, null=False, unique=True)
     name = models.CharField('Nome', max_length=100, blank=False, null=False)
     email = models.EmailField('E-mail', unique=True, blank=False, null=False)
     is_superuser = models.BooleanField('Super-Usuário', default=False)
