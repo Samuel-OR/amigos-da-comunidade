@@ -3,13 +3,20 @@
 {% load widget_tweaks %}
 {% load staticfiles %}
 
-{% block title %}Cadastro de Nova Permissão{% endblock %}
+{% block title %}Cadastro de Ediçao{% endblock %}
 {% block body %}
 
 <div class="content">
     <div class="row">
+
+            <div class="alert alert-warning" role="alert" style="text-align: center; margin-top: -1.3em;">
+              <strong>Atenção: </strong> O cadastro deste setor será atribuido automaticamente para a edição atual. 
+            </div>
+
+
+
         <div class=" col-md-offset-1 col-md-10">
-            <h3>Cadastrar Nova Permissão</h3>
+            <h3>Cadastrar Novo Setor de Atendimento</h3>
             <div class="box box-primary">
                 <form action="." class="form-group" method="post">{% csrf_token %}
                     <div class="box-body">

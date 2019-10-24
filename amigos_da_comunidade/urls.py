@@ -6,9 +6,9 @@ from django.contrib import admin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('edicao/', include('amigos_da_comunidade.edicao.urls', namespace='edicao')),
-    path('usuarios/', include('amigos_da_comunidade.usuarios.urls', namespace='usuarios')),
     path('', include('amigos_da_comunidade.website.urls', namespace='website')),
     path('atendimento/', include('amigos_da_comunidade.atendimento.urls', namespace='atendimento')),
     path('core/', include('amigos_da_comunidade.core.urls', namespace='core')),
+    path('accounts/', include('amigos_da_comunidade.accounts.urls', namespace='accounts')),
 
 ]

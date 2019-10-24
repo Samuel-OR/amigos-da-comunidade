@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',
+    'dal_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,13 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'widget_tweaks',
+    'easy_thumbnails',
 
     # Meus Apps
     'amigos_da_comunidade.atendimento',
     'amigos_da_comunidade.core',
     'amigos_da_comunidade.edicao',
-    'amigos_da_comunidade.usuarios',
     'amigos_da_comunidade.website',
+    'amigos_da_comunidade.accounts',
 ]
 
 MIDDLEWARE = [
@@ -108,13 +111,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# auth
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'core:index'
+LOGOUT_URL = 'accounts:logout'
+
+# Usando o módulo USER da nossa aplicação ACCOUNTS
+AUTH_USER_MODEL = 'accounts.User'
+
+# Autenticação por email/username
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'amigos_da_comunidade.accounts.backends.ModelBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-BR'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Fortaleza'
 
 USE_I18N = True
 
