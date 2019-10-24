@@ -16,7 +16,7 @@
 						{% for field in form %}
 						{% if field.errors %}
 								
-							{% if field.name in 'is_whatsapp\commitment' or field.name in 'is_staff\commitment'%}
+							{% if field.name in 'is_superuser\commitment'%}
 
 								<div class="checkbox col-md-4 margin-bottom-15 has-error has-feedback">
 									<label>
@@ -43,7 +43,7 @@
 							
 
 						{%else%}
-							{% if field.name in 'is_whatsapp\commitment' or field.name in 'is_staff\commitment'%}
+							{% if field.name in 'is_superuser\commitment'%}
 
 								<div class="checkbox col-md-4 margin-bottom-15">
 									<label>

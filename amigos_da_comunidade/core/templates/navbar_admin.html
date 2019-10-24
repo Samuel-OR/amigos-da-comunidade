@@ -40,8 +40,8 @@
       </span>
     </a>
     <ul class="treeview-menu" >
-      <li class=""><a href=""><i class="fas fa-users"></i>Novos</a></li>
-      <li class=""><a href=""><i class="fas fa-users"></i>Listar todos</a></li>
+      <li class=""><a href="{% url 'accounts:list_user_admin' %}"><i class="fas fa-users"></i>Administradores</a></li>
+      <li class=""><a href="{% url 'accounts:list_user' %}"><i class="fas fa-users"></i>Voluntários</a></li>
     </ul>
   </li>
 

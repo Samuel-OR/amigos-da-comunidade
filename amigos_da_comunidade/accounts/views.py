@@ -11,11 +11,8 @@ from django.db.models import Q
 from django.db import IntegrityError, transaction
 from django.contrib import messages
 from dal import autocomplete
-from .models import (
-    User)
-from .forms import (
-    UpdateUserForm,
-    UserCreationForm)
+from .models import *
+from .forms import *
 
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, permission_required
@@ -51,7 +48,7 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
 class CreateUser(CreateView):
     model = User
     template_name = 'accounts/add.html'
-    form_class = UserCreationForm
+    form_class = UserAdminCreationForm
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
@@ -63,7 +60,7 @@ class CreateUser(CreateView):
 
     def form_valid(self,form):
         self.object = form.save()
-        self.object.is_superuser = True
+        self.object.is_superuser = False
         self.object.save()
         
         return HttpResponseRedirect(reverse('accounts:list_user'))
@@ -73,7 +70,7 @@ class CreateUser(CreateView):
 class CreateUserAdmin(CreateView):
     model = User
     template_name = 'accounts/add.html'
-    form_class = UserCreationForm
+    form_class = UserAdminCreationForm
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
@@ -181,7 +178,7 @@ class EditUser(UpdateView):
     ClassView para edição de Usuário
     """
     model = User
-    form_class = UserCreationForm
+    form_class = UserAdminCreationForm
     template_name = 'accounts/add.html'
 
     def get(self, request, *args, **kwargs):
@@ -215,78 +212,3 @@ def user_delete(request, pk):
         user.delete()
         return JsonResponse({'msg': "Avaliação excluida com sucesso!", 'code': "1"})
 
-
-# # Autocomplete Specialty
-# @method_decorator(login_required, name='dispatch')
-# class SpecialtyAutocomplete(autocomplete.Select2QuerySetView):
-#     def get_queryset(self):
-#         # Don't forget to filter out results depending on the visitor !
-
-#         qs = Specialty.objects.all()
-
-#         if self.q:
-#             qs = qs.filter(description__icontains=self.q)
-
-#         return qs
-
-# @method_decorator(login_required, name='dispatch')
-# class ListSpecialtyView(ListView):
-#     model = Specialty
-#     template_name = 'specialty/list.html'
-#     http_method_names = ['get']
-#     # muda o nome do product_list gerado por padrao pela classe
-#     context_object_name = 'object_list'
-#     paginate_by = 25
-
-#     def get_queryset(self):
-#         self.queryset = super(ListSpecialtyView, self).get_queryset()
-#         if self.request.GET.get('search_box', False) :
-#             self.queryset = self.queryset.filter(description__icontains = self.request.GET['search_box'])
-#         return self.queryset
-
-#     def get_context_data(self, **kwargs):
-#         _super = super(ListSpecialtyView, self)
-#         context = _super.get_context_data(**kwargs)
-#         adjacent_pages = 3
-#         page_number = context['page_obj'].number
-#         num_pages = context['paginator'].num_pages
-#         startPage = max(page_number - adjacent_pages, 1)
-#         if startPage <= 5:
-#             startPage = 1
-#         endPage = page_number + adjacent_pages + 1
-#         if endPage >= num_pages - 1:
-#             endPage = num_pages + 1
-#         page_numbers = [n for n in range(startPage, endPage) \
-#                         if n > 0 and n <= num_pages]
-
-#         context.update({
-#             'page_numbers': page_numbers,
-#             'show_first': 1 not in page_numbers,
-#             'show_last': num_pages not in page_numbers,
-#             })
-#         return context
-
-# @method_decorator(login_required, name='dispatch')
-# class CreateSpecialtyView(CreateView):
-#     model = Specialty
-#     template_name = 'specialty/add.html'
-#     form_class = SpecialtyForm
-
-# @method_decorator(login_required, name='dispatch')
-# class UpdateSpecialtyView(UpdateView):
-#     model = Specialty
-#     template_name = 'specialty/add.html'
-#     form_class = SpecialtyForm
-
-# @method_decorator(login_required, name='dispatch')
-# class DetailSpecialtyView(DetailView):
-#     model = Specialty
-#     template_name = 'specialty/details.html'
-
-
-# # specialty DELETE JSON
-# @login_required
-# def delete_specialty(request, pk):
-#     specialty = get_object_or_404(Specialty, pk=pk)
-#     specialty.delete()
-#     return JsonResponse({'msg': "Especialidade excluida com sucesso!", 'code': "1"})

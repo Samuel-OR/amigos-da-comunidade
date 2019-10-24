@@ -81,5 +81,5 @@ urlpatterns = [
     path('participant/list/', ListUser.as_view(), name='list_user'),
     
     path('edit/<int:pk>/', EditUser.as_view(), name='edit_user'),
-    path('user/delete/<int:pk>/', user_delete, name='delete_user',),
+    path('user/delete/<int:pk>/', user_delete, name='delete_user',), 
 ]

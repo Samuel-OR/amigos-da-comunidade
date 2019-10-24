@@ -11,14 +11,14 @@ class UserAdminCreationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'name', 'email']
+        fields = ['username', 'email', 'name','is_superuser']
 
 
 class UserAdminForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'name', 'is_active', 'is_staff']
+        fields = ['username', 'email', 'name','is_superuser']
 
 
 class UpdateUserForm(forms.ModelForm):
@@ -45,7 +45,7 @@ class UserCreationForm(UserCreationForm):
     username =  forms.CharField(initial='')
     class Meta:
         model = User
-        fields = ['username', 'name', 'email', 'cpf', 'sex', 'phone', 'is_whatsapp']
+        fields = ['username', 'name', 'email','sex', 'phone']
 
 
 class UpdateUserForm(forms.ModelForm):
@@ -54,5 +54,5 @@ class UpdateUserForm(forms.ModelForm):
     """
     class Meta:
         model = User
-        fields = ['name', 'email', 'cpf', 'sex', 'phone', 'is_whatsapp']
+        fields = ['name', 'email', 'sex', 'phone', ]
 
