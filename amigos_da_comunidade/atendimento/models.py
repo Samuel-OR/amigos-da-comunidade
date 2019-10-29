@@ -21,7 +21,7 @@ class Setor(AuditModel):
         verbose_name_plural = 'Setores'
         ordering = ['-created_on']
 
-<<<<<<< HEAD
+
 
 
 class Triagem(AuditModel):
@@ -29,29 +29,22 @@ class Triagem(AuditModel):
     edicao = models.ForeignKey(Edicao, verbose_name='Edição', blank=True, null=True, on_delete=models.DO_NOTHING)
     membros = models.ManyToManyField(User,related_name='membros', verbose_name='Membros da Triagem', blank=True)
 
-=======
+
 class FichaAtendimento(AuditModel):
 
     nome_paciente = models.CharField('Nome do Paciente', blank=False, null=False, max_length=255)
-    idade = models.IntegerField('Idade', blank=False, null=False, max_length=5)
+    idade = models.IntegerField('Idade', blank=False, null=False)
     endereco = models.CharField('Endereço', blank=False, null=False, max_length=255)
->>>>>>> 3c0e8d8aa832a32e3ebf3f477d8c56b4825fd35c
+
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-<<<<<<< HEAD
         return reverse('atendimento:triagem_list')
 
-    class Meta:
-        verbose_name = 'Setor'
-        verbose_name_plural = 'Setores'
-=======
-        return reverse('atendimento:ficha_list')
 
     class Meta:
         verbose_name = 'Ficha_de_atendimento'
         verbose_name_plural = 'Fichas_de_atendimento'
->>>>>>> 3c0e8d8aa832a32e3ebf3f477d8c56b4825fd35c
         ordering = ['-created_on']

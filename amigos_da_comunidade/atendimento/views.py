@@ -89,8 +89,6 @@ def setor_delete(request, pk):
 	setor.delete()
 	return JsonResponse({'msg': "Setor excluido com sucesso!", 'code': "1"})
 
-<<<<<<< HEAD
-
 class TriagemCreate(CreateView):
 	model = Triagem
 	template_name = 'triagem/add.html'
@@ -165,8 +163,7 @@ def triagem_delete(request, pk):
 	triagem.delete()
 	return JsonResponse({'msg': "triagem excluida com sucesso!", 'code': "1"})
 
-=======
->>>>>>> 3c0e8d8aa832a32e3ebf3f477d8c56b4825fd35c
+
 class MembrosAutocomplete(autocomplete.Select2QuerySetView):
 	def get_queryset(self):
 
@@ -177,7 +174,6 @@ class MembrosAutocomplete(autocomplete.Select2QuerySetView):
 
 		return qs
 
-#-------------
 
 class FichaAtendimentoCreate(CreateView):
 	model = FichaAtendimento
