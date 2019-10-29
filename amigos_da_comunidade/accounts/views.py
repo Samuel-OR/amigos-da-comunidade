@@ -66,7 +66,7 @@ class CreateUser(CreateView):
         return HttpResponseRedirect(reverse('accounts:list_user'))
 
 
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 class CreateUserAdmin(CreateView):
     model = User
     template_name = 'accounts/add.html'

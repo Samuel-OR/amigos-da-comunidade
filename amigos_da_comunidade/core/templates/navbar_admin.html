@@ -5,36 +5,37 @@
 
   <li class="treeview ">
     <a href="#" >
-      <i class="fas fa-database"></i> <span> Edição </span>
+      <i class="fas fa-th-large"></i> <span> Edição </span>
       <span class="pull-right-container">
         <!-- <i class="fa fa-angle-left pull-right"></i> -->
       </span>
     </a>
     <ul class="treeview-menu" >
-      <li class=""><a href="{% url 'edicao:edicao_create' %}"><i class="fas fa-user-md"></i>Nova Edição</a></li>
-      <li class=""><a href="{% url 'edicao:edicao_list' %}"><i class="fas fa-user"></i> Listar Edições</a></li>
+      <li class=""><a href="{% url 'edicao:edicao_create' %}"><i class="fas fa-plus"></i>Nova Edição</a></li>
+      <li class=""><a href="{% url 'edicao:edicao_list' %}"><i class="fas fa-list-ol"></i>Listar Edições</a></li>
     </ul>
   </li>
 
 
   <li class="treeview ">
     <a href="#" >
-      <i class="fas fa-database"></i> <span> Atendimentos</span>
+      <i class="fas fa-briefcase-medical"></i><span> Atendimentos/Stores</span>
       <span class="pull-right-container">
         <!-- <i class="fa fa-angle-left pull-right"></i> -->
       </span>
     </a>
     <ul class="treeview-menu " >
-      <li class=""><a href=""><i class="fas fa-users"></i> Setores de Atendimento</a></li>
-      <li class=""><a href=""><i class="fas fa-heartbeat"></i>  Ficha de Atendimento</a></li>
-      <li class=""><a href=""><i class="fas fa-users"></i> Fila de Atendimento</a></li>
+      <li class=""><a href="{% url 'atendimento:setor_list' %}"><i class="fas fa-list-ol"></i> Setores de Atendimento</a></li>
+      <li class=""><a href=""><i class="fas fa-file-medical-alt"></i>  Ficha de Atendimento</a></li>
+      <li class=""><a href=""><i class="fas fa-clipboard-list"></i> Fila de Atendimento</a></li> 
+      <li class=""><a href=""><i class="fas fa-male"></i> Triagem</a></li>
     </ul>
   </li>
 
 
   <li class="treeview">
     <a href="#" >
-      <i class="fas fa-database"></i> <span> Usuários</span>
+      <i class="fas fa-users"></i> <span> Usuários</span>
       <span class="pull-right-container">
         <!-- <i class="fa fa-angle-left pull-right"></i> -->
       </span>
