@@ -16,6 +16,13 @@ class SetorForm(forms.ModelForm):
             'membros': autocomplete.ModelSelect2Multiple(url='atendimento:membros_autocomplete'),
 
         }
+class FichaAtendimentoForm(forms.ModelForm):
+    
+	class Meta:
+		model = FichaAtendimento
+
+		fields = ['nome_paciente','idade','endereco']
+
 
 
 class TriagemForm(forms.ModelForm):
