@@ -20,3 +20,22 @@ class Setor(AuditModel):
         verbose_name = 'Setor'
         verbose_name_plural = 'Setores'
         ordering = ['-created_on']
+
+
+
+class Triagem(AuditModel):
+
+    edicao = models.ForeignKey(Edicao, verbose_name='Edição', blank=True, null=True, on_delete=models.DO_NOTHING)
+    membros = models.ManyToManyField(User,related_name='membros', verbose_name='Membros da Triagem', blank=True)
+
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('atendimento:triagem_list')
+
+    class Meta:
+        verbose_name = 'Setor'
+        verbose_name_plural = 'Setores'
+        ordering = ['-created_on']

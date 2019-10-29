@@ -9,10 +9,10 @@ urlpatterns = [
 	path('setor/editar/<int:pk>/', SetorUpdate.as_view(), name='setor_update',),
 	path('setor/deletar/<int:pk>/', setor_delete, name='setor_delete',),
 
-	# path('professor/adicionar/', ProfessorCreate.as_view(), name='professor_create',),
-	# path('professor/listar/', ProfessorList.as_view(), name='professor_list',),
-	# path('professor/editar/<int:pk>/', ProfessorUpdate.as_view(), name='professor_update',),
-	# path('professor/deletar/<int:pk>/', professor_delete, name='professor_delete',),
+	path('triagem/adicionar/', TriagemCreate.as_view(), name='triagem_create',),
+	path('triagem/listar/', TriagemList.as_view(), name='triagem_list',),
+	path('triagem/editar/<int:pk>/', TriagemUpdate.as_view(), name='triagem_update',),
+	path('triagem/deletar/<int:pk>/', triagem_delete, name='triagem_delete',),
 
 	path('membros-autocomplete/',MembrosAutocomplete.as_view(), name='membros_autocomplete',),
 	# path('instituicao-autocomplete/',InstituicaoAutocomplete.as_view(), name='instituicao_autocomplete',),

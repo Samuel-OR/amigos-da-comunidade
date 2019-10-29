@@ -17,3 +17,14 @@ class SetorForm(forms.ModelForm):
 
         }
 
+
+class TriagemForm(forms.ModelForm):
+    
+	class Meta:
+		model = Triagem
+		fields = ['membros']
+
+		widgets = {
+            'membros': autocomplete.ModelSelect2Multiple(url='atendimento:membros_autocomplete'),
+
+        }
