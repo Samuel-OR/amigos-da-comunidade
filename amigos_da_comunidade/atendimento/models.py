@@ -20,3 +20,20 @@ class Setor(AuditModel):
         verbose_name = 'Setor'
         verbose_name_plural = 'Setores'
         ordering = ['-created_on']
+
+class FichaAtendimento(AuditModel):
+
+    nome_paciente = models.CharField('Nome do Paciente', blank=False, null=False, max_length=255)
+    idade = models.IntegerField('Idade', blank=False, null=False, max_length=5)
+    endereco = models.CharField('Endereço', blank=False, null=False, max_length=255)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('atendimento:ficha_list')
+
+    class Meta:
+        verbose_name = 'Ficha_de_atendimento'
+        verbose_name_plural = 'Fichas_de_atendimento'
+        ordering = ['-created_on']

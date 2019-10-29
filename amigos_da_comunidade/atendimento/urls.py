@@ -21,5 +21,10 @@ urlpatterns = [
 	# path('aluno/listar/', AlunoList.as_view(), name='aluno_list',),
 	# path('aluno/editar/<int:pk>/', AlunoUpdate.as_view(), name='aluno_update',),
 	# path('aluno/deletar/<int:pk>/', aluno_delete, name='aluno_delete',), 
+
+	path('ficha/adicionar/',FichaAtendimentoCreate.as_view(), name='ficha_create',),
+	path('ficha/listar/',SetorList.as_view(), name='ficha_list',),
+	path('ficha/editar/<int:pk>/',SetorUpdate.as_view(), name='ficha_update',),
+	path('ficha/adicionar/<int:pk>/',setor_delete, name='ficha_delete',),
 	
 ]
